@@ -62,7 +62,8 @@
 	define("OS_LINUX", 2);
 	define("OS_BSD", 3);
 	define("OS_ANDROID", 4);
-	define("OS_IPHONE", 5);
+        define("OS_IPHONE", 5);
+        define("OS_CLI", 6);
 	define("OS_UNKNOWN", 99);
 
 	// Detect user's platform from user agent
@@ -99,8 +100,12 @@
 		else if (strpos($agent, "BSD"))
 		{
 			return OS_BSD;
+                }
+                // cURL client
+		else if (strpos($agent, "curl")) 
+		{
+			return OS_CLI;
 		}
-
 		// Any other, unknown platform
 		return OS_UNKNOWN;
 	}
